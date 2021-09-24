@@ -4,8 +4,8 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return <>
-    <Head>
-      <title>MyTop - the best app</title>
+    <Head >
+      <title lang='en'>MyTop - the best app</title>
       <link rel='icon' href='/favicon.ico' />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
