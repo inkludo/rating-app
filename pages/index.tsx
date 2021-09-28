@@ -7,14 +7,14 @@ function Home(): JSX.Element {
   const [rating, setRating] = useState<number>(4);
 
   return (
-    <>
+    <div>
       <Htag tag='h1'>SomeText</Htag>
       <Button appearance='primary' arrow='right'>Click me</Button>
       <Button appearance='ghost' arrow='down'>Click me</Button>
       <Ptag size='m'>Hello I'm a p tag!</Ptag>
       <Tag size='m' color='red' href='udemy.com'>Click</Tag>
       <Rating rating={rating} isEditable setRating={setRating} />
-    </>
+    </div>
   );
 }
 
