@@ -17,9 +17,6 @@ function Home({ menu }: HomeProps): JSX.Element {
       <Ptag size='m'>Hello I'm a p tag!</Ptag>
       <Tag size='m' color='red' href='udemy.com'>Click</Tag>
       <Rating rating={rating} isEditable setRating={setRating} />
-      <ul>
-        {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
-      </ul>
     </div>
   );
 }
