@@ -1,19 +1,31 @@
-import { Htag, Tag, HhData, Advantages } from '../../components';
+import { Htag, Tag, HhData, Advantages, Sort } from '../../components';
 import { PageComponentProps } from './PageComponent.props';
 import { LevelCategory } from '../../interfaces/page.interface';
 import parse from 'html-react-parser';
 import styles from './PageComponent.module.css';
+import { SortEnum } from '../../components/Sort/Sort.props';
+import { useEffect, useReducer } from 'react';
+import { sortReducer } from './sort.reducer';
 
 export const PageComponent = ({ page, products, firstCategory }: PageComponentProps): JSX.Element => {
+	const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
+	const setSort = (sort: SortEnum) => {
+		dispatchSort({ type: sort });
+	};
+
+	useEffect(() => {
+		dispatchSort({ type: 'reset', initialState: products });
+	}, [products]);
+
 	return (
 		<div>
 			<div className={styles.title}>
 				<Htag tag='h1'>{page.title}</Htag>
 				{products && <Tag color='grey' size='m'>{products.length}</Tag>}
-				<span>Sorting</span>
+				<Sort sort={sort} setSort={setSort} />
 			</div>
 			<div>
-				{products && products.map(product => <div key={product._id}>{product.title}</div>)}
+				{sortedProducts && sortedProducts.map(product => <div key={product._id}>{product.title}</div>)}
 			</div>
 			<div className={styles.hhTitle}>
 				<Htag tag='h2'>Вакансии – {page.category}</Htag>
