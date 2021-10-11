@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { PtagProps } from './Ptag.props';
 import cn from 'classnames';

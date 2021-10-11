@@ -1,4 +1,4 @@
-import { Htag, Tag, HhData, Advantages, Sort } from '../../components';
+import { Htag, Tag, HhData, Advantages, Sort, Product } from '../../components';
 import { PageComponentProps } from './PageComponent.props';
 import { LevelCategory } from '../../interfaces/page.interface';
 import parse from 'html-react-parser';
@@ -25,7 +25,7 @@ export const PageComponent = ({ page, products, firstCategory }: PageComponentPr
 				<Sort sort={sort} setSort={setSort} />
 			</div>
 			<div>
-				{sortedProducts && sortedProducts.map(product => <div key={product._id}>{product.title}</div>)}
+				{sortedProducts && sortedProducts.map(product => <Product key={product._id} product={product} />)}
 			</div>
 			<div className={styles.hhTitle}>
 				<Htag tag='h2'>Вакансии – {page.category}</Htag>
