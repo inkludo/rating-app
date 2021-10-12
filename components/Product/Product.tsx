@@ -36,7 +36,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				{product.characteristics.map(c => (
 					<div className={styles.characteristics} key={c.name}>
 						<span className={styles.characteristicsName}>{c.name}</span>
-						<span className={styles.characteristicsDot}></span>
+						<span className={styles.characteristicsDots}></span>
 						<span className={styles.characteristicsValue}>{c.value}</span>
 					</div>
 				))}
