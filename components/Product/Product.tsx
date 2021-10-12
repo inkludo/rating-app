@@ -1,17 +1,22 @@
 import { ProductProps } from './Product.props';
-import styles from './Product.module.css';
-import { Card } from '../Card/Card';
-import { Rating } from '../Rating/Rating';
-import { Tag } from '../Tag/Tag';
-import { Button } from '../Button/Button';
+import { Divider, Button, Tag, Rating, Card } from '..';
 import { declOfNum, priceUSD } from '../../helpers/helpers';
-import { Divider } from '..';
+import Image from 'next/image';
+import cn from 'classnames';
+import styles from './Product.module.css';
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 
 	return (
 		<Card className={styles.product} >
-			<div className={styles.logo}><img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /></div>
+			<div className={styles.logo}>
+				<Image
+					src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
+					alt={product.title}
+					width={70}
+					height={70}
+				/>
+			</div>
 			<div className={styles.title}>{product.title}</div>
 			<div className={styles.price}>
 				{priceUSD(product.price)}
@@ -46,7 +51,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 					<div>{product.disAdvantages}</div>
 				</div>}
 			</div>
-			<Divider className={styles.hr} />
+			<Divider className={cn(styles.hr, styles.hr2)} />
 			<div className={styles.actions}>
 				<Button appearance='primary'>Узнать подробнее</Button>
 				<Button appearance='ghost' arrow={'right'} className={styles.reviewButton}>Читать отзывы</Button>

@@ -1,6 +1,9 @@
 module.exports = {
   reactStrictMode: true,
-  webpack(config, options) {
+  images: {
+    domains: ['courses-top.ru']
+  },
+  webpack(config) {
     config.module.rules.push({
       loader: '@svgr/webpack',
       options: {
