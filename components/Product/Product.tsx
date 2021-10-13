@@ -6,7 +6,7 @@ import cn from 'classnames';
 import styles from './Product.module.css';
 import { useState } from 'react';
 
-export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
+export const Product = ({ product }: ProductProps): JSX.Element => {
 
 	const [isReviewOpened, setReviewOpened] = useState<boolean>(false);
 
