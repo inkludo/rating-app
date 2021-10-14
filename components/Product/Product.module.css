@@ -218,6 +218,10 @@
 		grid-area: rateTitle;
 	}
 
+	.rateTitle a {
+		background: var(--primary);
+	}
+
 	.hr {
 		grid-area: hr;
 	}
