@@ -27,7 +27,7 @@
 	cursor: pointer;
 	text-transform: uppercase;
 
-	color: var(--gray-dark);
+	color: var(--dark-grey);
 
 	font-size: 12px;
 
@@ -44,15 +44,7 @@
 }
 
 .secondLevelBlock {
-	display: none;
-}
-
-.secondLevelBlockOpened {
-	display: block;
-}
-
-.secondLevelBlockOpened:last-child {
-	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 .thirdLevel {
