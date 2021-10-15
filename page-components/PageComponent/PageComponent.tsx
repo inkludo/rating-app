@@ -33,7 +33,7 @@ export const PageComponent = ({ page, products, firstCategory }: PageComponentPr
 			</div>
 			<div className={styles.hh}>
 				{firstCategory == LevelCategory.Courses && page.hh && <HhData {...page.hh} />}
-				{page.advantages && page.advantages.length > 1 && <>
+				{page.advantages && page.advantages.length > 0 && <>
 					<Htag tag='h2'>Преимущества</Htag>
 					<Advantages advantages={page.advantages} />
 				</>
