@@ -1,12 +1,12 @@
 import React, { useState, KeyboardEvent } from 'react';
-import { SerchProps } from './Search.props';
+import { SearchProps } from './Search.props';
 import cn from 'classnames';
 import { Button, Input } from '..';
 import GlassIcon from './glass.svg';
 import styles from './Search.module.css';
 import { useRouter } from 'next/router';
 
-export const Search = ({ className, ...props }: SerchProps): JSX.Element => {
+export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 	const [search, setSearch] = useState<string>('');
 	const router = useRouter();
 
@@ -20,27 +20,25 @@ export const Search = ({ className, ...props }: SerchProps): JSX.Element => {
 	};
 
 	const handleKeyDown = (e: KeyboardEvent) => {
-		if (e.key === 'Enter') {
+		if (e.key == 'Enter') {
 			goToSearch();
 		}
 	};
 
 	return (
-		<div
-			className={cn(className, styles.search)}
-			{...props}
-		>
+		<div className={cn(className, styles.search)} {...props}>
 			<Input
-				placeholder='Поиск...'
+				className={styles.input}
+				placeholder="Поиск..."
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
-				className={styles.input}
 				onKeyDown={handleKeyDown}
 			/>
 			<Button
-				appearance='primary'
+				appearance="primary"
 				className={styles.button}
 				onClick={goToSearch}
+				aria-label="Искать по сайту"
 			>
 				<GlassIcon />
 			</Button>
