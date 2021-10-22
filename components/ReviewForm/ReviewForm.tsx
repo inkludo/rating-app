@@ -10,7 +10,7 @@ import styles from './ReviewForm.module.css';
 import { useState } from 'react';
 
 export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewFormProps): JSX.Element => {
-	const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
+	const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IReviewForm>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [error, setError] = useState<string>();
 
@@ -38,6 +38,7 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
 					placeholder='Имя'
 					error={errors.name}
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.name ? true : false}
 				/>
 				<Input
 					{...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
@@ -45,6 +46,7 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
 					className={styles.title}
 					error={errors.title}
 					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.title ? true : false}
 				/>
 				<div className={styles.rating}>
 					<span>Оценка:</span>
@@ -70,9 +72,11 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
 					className={styles.description}
 					error={errors.description}
 					tabIndex={isOpened ? 0 : -1}
+					aria-label='Текст отзыва'
+					aria-invalid={errors.description ? true : false}
 				/>
 				<div className={styles.submit}>
-					<Button appearance="primary" tabIndex={isOpened ? 0 : -1}>Отправить</Button>
+					<Button appearance="primary" tabIndex={isOpened ? 0 : -1} onClick={() => clearErrors()}>Отправить</Button>
 					<span className={styles.info}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
 				</div>
 			</div>
